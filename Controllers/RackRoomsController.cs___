@@ -1,0 +1,26 @@
+using Data;
+using Microsoft.AspNetCore.Mvc;
+using Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace csharp_crud_api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class RackRoomsController : RacksController
+{
+  public RackRoomsController(RackContext context)
+            :base(context)
+            {
+
+            }
+
+  // GET: api/Racks
+  [HttpGet]
+  public async Task<ActionResult<IEnumerable<RackRoom>>> GetRacks()
+  {
+    return await _context.RackRooms.FromSqlRaw("Select racks.*,rooms.id as room_id,rooms.name as room_name From Racks Join Rooms On room_no = Rooms.Id").AsNoTracking()
+    .ToListAsync();
+  }
+ 
+}

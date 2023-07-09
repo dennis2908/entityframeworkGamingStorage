@@ -1,0 +1,14 @@
+public class RackRoomViewModel
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public int Room_no { get; set; }
+
+    public int Rack_id { get; set; }
+
+    public string Rack_name { get; set; }
+
+    public int Build_no { get; set; }
+}
